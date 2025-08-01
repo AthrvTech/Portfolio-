@@ -1,72 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <title>Model Portfolio - Your Name</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <title>Athrv - Luxury Digital Experiences</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0a192f',
+                        'gold': '#d4af37',
+                        'light-slate': '#ccd6f6',
+                        'slate': '#8892b0',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                    transitionTimingFunction: {
+                        'in-out-hard': 'cubic-bezier(0.77, 0, 0.175, 1)',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #0a192f;
+            color: #8892b0;
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #ccd6f6;
+        }
+        .gold-text {
+            color: #d4af37;
+        }
+        .btn {
+            @apply border border-gold text-gold font-mono text-sm rounded-md px-8 py-4 transition-all duration-300 hover:bg-gold/10;
+        }
+        .section {
+            @apply min-h-screen flex items-center justify-center py-20 px-5 sm:px-10 md:px-20;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            @apply relative text-light-slate hover:text-gold transition-colors duration-300;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4af37;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Your Name</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-navy/80 backdrop-blur-sm shadow-md transition-transform duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-serif font-bold gold-text">Athrv</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:block btn px-5 py-2">Inquire Now</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-light-slate focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm text-light-slate hover:bg-slate/10">About</a>
+            <a href="#services" class="block py-2 px-4 text-sm text-light-slate hover:bg-slate/10">Services</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-light-slate hover:bg-slate/10">Contact</a>
+        </div>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <img src="profile.jpg" alt="Your modeling photo" class="profile-img">
-        <p>
-            Hi! I'm [Your Name], a professional model based in [Location]. Experienced in fashion, commercial, and editorial work.
-            Passionate about creativity and collaboration. Let's work together!
-        </p>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-sm sm:text-base text-gold font-mono mb-4 fade-in">Welcome to Athrv</h1>
+                <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif font-extrabold text-light-slate mb-4 fade-in" style="transition-delay: 100ms;">Crafting Digital Elegance.</h2>
+                <h3 class="text-4xl sm:text-5xl md:text-7xl font-serif font-extrabold text-slate mb-8 fade-in" style="transition-delay: 200ms;">Engineering Premium Experiences.</h3>
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate mb-12 fade-in" style="transition-delay: 300ms;">
+                    We are a luxury-focused technology brand, building refined digital solutions for discerning clients. We merge design finesse with technical expertise to deliver excellence and reliability.
+                </p>
+                <div class="fade-in" style="transition-delay: 400ms;">
+                    <a href="#contact" class="btn">Begin a Conversation</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="gallery">
-            <img src="portfolio1.jpg" alt="Modeling photo 1">
-            <img src="portfolio2.jpg" alt="Modeling photo 2">
-            <img src="portfolio3.jpg" alt="Modeling photo 3">
-            <!-- Add more images as needed -->
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container mx-auto max-w-5xl fade-in">
+                <h2 class="section-title text-3xl sm:text-4xl mb-12 text-center relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-gold text-2xl">I.</span>
+                    Our Philosophy
+                </h2>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-6">
+                        <p>At Athrv, we believe technology should be both powerful and beautiful. Our work is founded on a commitment to <strong class="text-light-slate">premium quality, refined aesthetics, and innovative solutions.</strong> We don't just build websites and applications; we craft bespoke digital experiences that resonate with sophisticated audiences.</p>
+                        <p>Our core values guide every project:</p>
+                        <ul class="space-y-2 list-inside">
+                            <li class="flex items-start">
+                                <span class="text-gold mr-3 mt-1">&#10022;</span>
+                                <div><strong class="text-light-slate">Excellence:</strong> We pursue the highest standards in design and development, ensuring every detail is perfected.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold mr-3 mt-1">&#10022;</span>
+                                <div><strong class="text-light-slate">Reliability:</strong> Our solutions are robust, secure, and built to perform flawlessly.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-gold mr-3 mt-1">&#10022;</span>
+                                <div><strong class="text-light-slate">Bespoke Service:</strong> We collaborate closely with our clients to tailor every project to their unique vision and goals.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-center items-center p-8">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                            <div class="absolute inset-0 border-2 border-gold rounded-lg transform rotate-6 transition-transform duration-500 hover:rotate-0"></div>
+                            <div class="absolute inset-0 bg-navy rounded-lg flex items-center justify-center p-4">
+                                <span class="text-8xl font-serif text-gold opacity-75">A</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section bg-navy/70">
+            <div class="container mx-auto max-w-6xl text-center fade-in">
+                <h2 class="section-title text-3xl sm:text-4xl mb-16 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-gold text-2xl">II.</span>
+                    Our Services
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-navy p-8 rounded-lg border border-slate/20 hover:border-gold/50 hover:-translate-y-2 transition-all duration-300">
+                        <div class="text-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif text-light-slate mb-2">Web Development</h3>
+                        <p class="text-slate text-sm">Creating fast, responsive, and secure websites with a focus on world-class typography and seamless interactions.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-navy p-8 rounded-lg border border-slate/20 hover:border-gold/50 hover:-translate-y-2 transition-all duration-300">
+                        <div class="text-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif text-light-slate mb-2">UI/UX Design</h3>
+                        <p class="text-slate text-sm">Designing modern, intuitive, and accessible user interfaces that provide a welcoming and exclusive feel.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-navy p-8 rounded-lg border border-slate/20 hover:border-gold/50 hover:-translate-y-2 transition-all duration-300">
+                        <div class="text-gold mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif text-light-slate mb-2">Brand Identity</h3>
+                        <p class="text-slate text-sm">Developing cohesive branding strategies, including logo, color, and typography selection for luxury brands.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container mx-auto max-w-3xl text-center fade-in">
+                <h2 class="section-title text-3xl sm:text-4xl mb-4 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-gold text-2xl">III.</span>
+                    Contact
+                </h2>
+                <p class="text-slate mb-12">Let's discuss how we can bring your vision to life.</p>
+                <form id="contact-form" class="w-full max-w-lg mx-auto">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-light-slate text-xs font-bold mb-2" for="grid-first-name">
+                                Full Name
+                            </label>
+                            <input class="appearance-none block w-full bg-slate/10 text-light-slate border border-slate/30 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate/20 focus:border-gold" id="grid-first-name" type="text" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-light-slate text-xs font-bold mb-2" for="grid-email">
+                                Email Address
+                            </label>
+                            <input class="appearance-none block w-full bg-slate/10 text-light-slate border border-slate/30 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate/20 focus:border-gold" id="grid-email" type="email" placeholder="email@example.com" required>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-light-slate text-xs font-bold mb-2" for="grid-message">
+                                Message
+                            </label>
+                            <textarea class="appearance-none block w-full bg-slate/10 text-light-slate border border-slate/30 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate/20 focus:border-gold h-48 resize-none" id="grid-message" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="btn" type="submit">
+                            Send Inquiry
+                        </button>
+                    </div>
+                </form>
+                <div id="form-status" class="mt-8 text-sm"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy py-8">
+        <div class="container mx-auto text-center text-slate text-sm">
+            <p>&copy; <span id="year"></span> Athrv. All Rights Reserved.</p>
+            <p class="mt-2">Designed & Developed with a passion for aesthetics and technology.</p>
         </div>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Brand 1:</strong> Fashion Show - 2024</li>
-            <li><strong>Brand 2:</strong> Commercial Photoshoot - 2023</li>
-            <li><strong>Magazine X:</strong> Cover Model - 2022</li>
-            <!-- Add more experiences -->
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <form id="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <div class="social-links">
-            <a href="https://instagram.com/" target="_blank">Instagram</a>
-            <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-            <!-- Add more social links -->
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Fade-in on scroll animation ---
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+            
+            // --- Hide header on scroll down, show on scroll up ---
+            let lastScrollTop = 0;
+            const header = document.getElementById('header');
+            window.addEventListener("scroll", function() {
+               let st = window.pageYOffset || document.documentElement.scrollTop;
+               if (st > lastScrollTop && st > 100) {
+                  // Scroll Down
+                  header.style.transform = 'translateY(-100%)';
+               } else {
+                  // Scroll Up
+                  header.style.transform = 'translateY(0)';
+               }
+               lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+            }, false);
+
+            // --- Contact Form Handling ---
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                formStatus.textContent = 'Thank you for your message. We will be in touch shortly.';
+                formStatus.className = 'mt-8 text-sm text-gold';
+                contactForm.reset();
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.className = 'mt-8 text-sm';
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>
